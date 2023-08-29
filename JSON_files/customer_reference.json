@@ -1,0 +1,3 @@
+{"customer_id": 1, "payment_type": "Visa", "store": "Brooklyn NYC"}
+{"customer_id": 2, "payment_type": "MasterCard", "store": "Manhatten NYC"}
+{"customer_id": 3, "payment_type": "Paypal", "store": "Online"}

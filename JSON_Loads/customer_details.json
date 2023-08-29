@@ -1,0 +1,3 @@
+{"customer_id": 1, "name": "John", "age": 30, "city": "New York", "is_student": false, "hobbies": ["reading", "painting", "swimming"], "address": { "street": "123 Main St", "city": "Springfield", "zip": "12345"}}
+{"customer_id": 2, "name": "Josh", "age": 33, "city": "New York", "is_student": false, "hobbies": ["photography", "painting", "travelling"], "address": { "street": "22 Upper East Street", "city": "Brooklyn", "zip": "8000"}}
+{"customer_id": 3, "name": "Yusef", "age": 37, "city": "London", "is_student": true, "hobbies": ["academia", "philosophy", "history of art", "yoga"], "address": { "street": "55 Mornington Crescent", "city": "Camden", "zip": "NW1 3RE"}}
