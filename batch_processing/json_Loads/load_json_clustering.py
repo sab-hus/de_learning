@@ -2,24 +2,21 @@ from google.cloud import bigquery
 
 client = bigquery.Client()
 
-table_id = "dt-sabah-sandbox-dev.load_json_partitioning.Flights"
-file_path = "/Users/sabahhussain/learning_development/JSON_files/flight_dates.json"
+table_id = "dt-sabah-sandbox-dev.load_json_clustering.Birthdays"
+file_path = "/Users/sabahhussain/learning_development/batch_processing/json_files/birthdays.json"
 
 schema = [
-    bigquery.SchemaField('Destination', 'STRING'),
-    bigquery.SchemaField('Airline', 'STRING'),
+    bigquery.SchemaField('Name', 'STRING'),
+    bigquery.SchemaField('Age', 'INTEGER'),
     bigquery.SchemaField('Date', 'DATE')
 ]
 
-time_partitioning = bigquery.TimePartitioning(
-        type_= bigquery.TimePartitioningType.YEAR,
-        field= 'Date'
-)
+clustering_fields = ['Date']
 
 job_config = bigquery.LoadJobConfig(
     source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
     schema=schema,
-    time_partitioning=time_partitioning
+    clustering_fields=clustering_fields
 )
 
 with open(file_path, 'rb') as source_file:

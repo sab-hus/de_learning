@@ -21,7 +21,7 @@ time_partitioning = bigquery.TimePartitioning(
 )
 
 table_id = "dt-sabah-sandbox-dev.load_with_partitioning.njord_csv_sample"
-file_path = "/Users/sabahhussain/learning_development/CSV_files/njord_csv_sample.csv"
+file_path = "/Users/sabahhussain/learning_development/batch_processing/csv_files/njord_csv_sample.csv"
 
 job_config = bigquery.LoadJobConfig(
     source_format = bigquery.SourceFormat.CSV, 

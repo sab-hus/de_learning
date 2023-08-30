@@ -2,8 +2,8 @@ from google.cloud import bigquery
 
 client = bigquery.Client()
 
-table_id = "dt-sabah-sandbox-dev.load_json_clustering.Fruit"
-file_path = "/Users/sabahhussain/learning_development/JSON_files/fruit.json"
+table_id = "dt-sabah-sandbox-dev.load_json_with_schema.Fruit"
+file_path = "/Users/sabahhussain/learning_development/batch_processing/json_files/fruit.json"
 
 schema = [
     bigquery.SchemaField('fruit', 'STRING'),
@@ -11,13 +11,9 @@ schema = [
     bigquery.SchemaField('color', 'STRING')
 ]
 
-clustering_fields = ['size']
-
-
 job_config = bigquery.LoadJobConfig(
     source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
-    schema=schema,
-    clustering_fields = clustering_fields
+    schema=schema
 )
 
 with open(file_path, 'rb') as source_file:

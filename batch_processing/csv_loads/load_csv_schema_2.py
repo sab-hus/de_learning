@@ -28,7 +28,7 @@ schema = [
 ]		
 
 table_id = "dt-sabah-sandbox-dev.load_with_schema.Significant_Earthquakes"
-file_path = "/Users/sabahhussain/learning_development/CSV_files/significant_earthquakes.csv"
+file_path = "/Users/sabahhussain/learning_development/batch_processing/csv_files/significant_earthquakes.csv"
 
 job_config = bigquery.LoadJobConfig(
     source_format = bigquery.SourceFormat.CSV, 

@@ -2,13 +2,12 @@ from google.cloud import bigquery
 
 client = bigquery.Client()
 
-table_id = "dt-sabah-sandbox-dev.load_json_with_schema.Fruit"
-file_path = "/Users/sabahhussain/learning_development/JSON_files/fruit.json"
+table_id = "dt-sabah-sandbox-dev.load_json_with_schema.Colours"
+file_path = "/Users/sabahhussain/learning_development/batch_processing/json_files/colours.json"
 
 schema = [
-    bigquery.SchemaField('fruit', 'STRING'),
-    bigquery.SchemaField('size', 'STRING'),
-    bigquery.SchemaField('color', 'STRING')
+    bigquery.SchemaField('Color', 'STRING'),
+    bigquery.SchemaField('Value', 'STRING')
 ]
 
 job_config = bigquery.LoadJobConfig(

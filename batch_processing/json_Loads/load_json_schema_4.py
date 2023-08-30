@@ -3,7 +3,7 @@ from google.cloud import bigquery
 client = bigquery.Client()
 
 table_id = "dt-sabah-sandbox-dev.load_json_with_schema.Customer"
-file_path = "/Users/sabahhussain/learning_development/JSON_files/customer_details.json"
+file_path = "/Users/sabahhussain/learning_development/batch_processing/json_files/customer_details.json"
 
 schema = [
     bigquery.SchemaField('customer_id', 'INTEGER'),

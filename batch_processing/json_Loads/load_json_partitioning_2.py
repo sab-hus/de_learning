@@ -2,17 +2,17 @@ from google.cloud import bigquery
 
 client = bigquery.Client()
 
-table_id = "dt-sabah-sandbox-dev.load_json_partitioning.Birthdays"
-file_path = "/Users/sabahhussain/learning_development/JSON_files/birthdays.json"
+table_id = "dt-sabah-sandbox-dev.load_json_partitioning.Flights"
+file_path = "/Users/sabahhussain/learning_development/batch_processing/json_files/flight_dates.json"
 
 schema = [
-    bigquery.SchemaField('Name', 'STRING'),
-    bigquery.SchemaField('Age', 'INTEGER'),
+    bigquery.SchemaField('Destination', 'STRING'),
+    bigquery.SchemaField('Airline', 'STRING'),
     bigquery.SchemaField('Date', 'DATE')
 ]
 
 time_partitioning = bigquery.TimePartitioning(
-        type_= bigquery.TimePartitioningType.DAY,
+        type_= bigquery.TimePartitioningType.YEAR,
         field= 'Date'
 )
 

@@ -3,7 +3,7 @@ from datetime import datetime
 from google.cloud import bigquery
 
 
-file_path = '/Users/sabahhussain/learning_development/CSV_files/people_100.csv'
+file_path = '/Users/sabahhussain/learning_development/batch_processing/csv_files/people_100.csv'
 
 transformed_data = []
 

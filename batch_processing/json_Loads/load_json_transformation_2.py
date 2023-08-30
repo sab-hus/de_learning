@@ -6,7 +6,7 @@ def transform_date(date_str):
     return date_str[:4]  # Extract the first 4 characters (YYYY)
 
 # Read the JSON file and perform the transformation
-file_path = '/Users/sabahhussain/learning_development/JSON_files/flight_dates.json'
+file_path = '/Users/sabahhussain/learning_development/batch_processing/json_files/flight_dates.json'
 
 transformed_data = []
 

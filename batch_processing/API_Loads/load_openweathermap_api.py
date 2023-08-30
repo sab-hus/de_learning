@@ -89,7 +89,7 @@ data = response.json()
 # print(data)
 
 # Define destination table and schema
-destination_table_id = "dt-sabah-sandbox-dev.load_api_data.OpenWeatherMap_api"  # Replace with your actual project, dataset, and table names
+destination_table_id = "dt-sabah-sandbox-dev.load_api_data.OpenWeatherMap_api" 
 
 schema = [
     bigquery.SchemaField('coord', 'RECORD', mode='NULLABLE', fields=[
@@ -140,5 +140,3 @@ load_job = client.load_table_from_json([data], destination_table_id, job_config=
 load_job.result()  # Wait for the job to complete
 
 print(f"Weather data loaded into {destination_table_id}.")
-
-

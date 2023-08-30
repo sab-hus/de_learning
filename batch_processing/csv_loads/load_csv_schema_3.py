@@ -17,7 +17,7 @@ schema = [
 ]
 
 table_id = "dt-sabah-sandbox-dev.load_with_schema.People"
-file_path = "/Users/sabahhussain/learning_development/CSV_files/people_100.csv"
+file_path = "/Users/sabahhussain/learning_development/batch_processing/csv_files/people_100.csv"
 
 job_config = bigquery.LoadJobConfig(
     source_format = bigquery.SourceFormat.CSV, 

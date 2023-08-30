@@ -7,10 +7,9 @@ table_id_1 = "dt-sabah-sandbox-dev.load_create_and_write_dispositions.Planets"
 table_id_2 = "dt-sabah-sandbox-dev.load_create_and_write_dispositions.Nutrition"
 table_id_3 = "dt-sabah-sandbox-dev.load_create_and_write_dispositions.World_Population"
 
-
-file_path_1 = "/Users/sabahhussain/learning_development/CSV_files/Planets.csv"
-file_path_2 = "/Users/sabahhussain/learning_development/CSV_files/nutrition.csv"
-file_path_3 = "/Users/sabahhussain/learning_development/CSV_files/WorldPopulation2023.csv"
+file_path_1 = "/Users/sabahhussain/learning_development/batch_processing/csv_files/Planets.csv"
+file_path_2 = "/Users/sabahhussain/learning_development/batch_processing/csv_files/nutrition.csv"
+file_path_3 = "/Users/sabahhussain/learning_development/batch_processing/csv_files/WorldPopulation2023.csv"
 
 job_config = bigquery.LoadJobConfig(
     source_format = bigquery.SourceFormat.CSV, 

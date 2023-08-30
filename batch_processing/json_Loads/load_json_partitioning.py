@@ -2,8 +2,8 @@ from google.cloud import bigquery
 
 client = bigquery.Client()
 
-table_id = "dt-sabah-sandbox-dev.load_json_with_schema.Birthdays"
-file_path = "/Users/sabahhussain/learning_development/JSON_files/birthdays.json"
+table_id = "dt-sabah-sandbox-dev.load_json_partitioning.Birthdays"
+file_path = "/Users/sabahhussain/learning_development/batch_processing/json_files/birthdays.json"
 
 schema = [
     bigquery.SchemaField('Name', 'STRING'),
@@ -11,9 +11,15 @@ schema = [
     bigquery.SchemaField('Date', 'DATE')
 ]
 
+time_partitioning = bigquery.TimePartitioning(
+        type_= bigquery.TimePartitioningType.DAY,
+        field= 'Date'
+)
+
 job_config = bigquery.LoadJobConfig(
     source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
-    schema=schema
+    schema=schema,
+    time_partitioning=time_partitioning
 )
 
 with open(file_path, 'rb') as source_file:

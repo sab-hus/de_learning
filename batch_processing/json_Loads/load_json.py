@@ -3,19 +3,19 @@ from google.cloud import bigquery
 client = bigquery.Client()
 
 table_id_1 = "dt-sabah-sandbox-dev.load_json.People"
-file_path_1 = "/Users/sabahhussain/learning_development/JSON_files/people.json"
+file_path_1 = "/Users/sabahhussain/learning_development/batch_processing/json_files/people.json"
 
 table_id_2 = "dt-sabah-sandbox-dev.load_json.Colours"
-file_path_2 = "/Users/sabahhussain/learning_development/JSON_files/colours.json"
+file_path_2 = "/Users/sabahhussain/learning_development/batch_processing/json_files/colours.json"
 
 table_id_3 = "dt-sabah-sandbox-dev.load_json.Fruit"
-file_path_3 = "/Users/sabahhussain/learning_development/JSON_files/fruit.json"
+file_path_3 = "/Users/sabahhussain/learning_development/batch_processing/json_files/fruit.json"
 
 table_id_4 = "dt-sabah-sandbox-dev.load_json.Customers"
-file_path_4 = "/Users/sabahhussain/learning_development/JSON_files/customer_details.json"
+file_path_4 = "/Users/sabahhussain/learning_development/batch_processing/json_files/customer_details.json"
 
 table_id_5 = "dt-sabah-sandbox-dev.load_json.Birthdays"
-file_path_5 = "/Users/sabahhussain/learning_development/JSON_files/birthdays.json"
+file_path_5 = "/Users/sabahhussain/learning_development/batch_processing/json_files/birthdays.json"
 
 job_config = bigquery.LoadJobConfig(
     source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
