@@ -25,9 +25,4 @@ file_table_pairs = generate_file_table_pairs(
     ("people_credit_check.csv", "data_for_joins.people_credit_check")
 )
 
-# logging configuration setting logging level to Info
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
-)
+# manual inputs and manual values in envion/config files: separate out codebase from the parameters you need
