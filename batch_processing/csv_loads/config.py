@@ -1,3 +1,5 @@
+import logging
+
 def generate_file_table_pairs(*args):
     file_table_pairs = []
     for file, table in args:
@@ -6,13 +8,14 @@ def generate_file_table_pairs(*args):
             f"dt-sabah-sandbox-dev.{table}"
         ))
     return file_table_pairs
+# add if else to remove the 'dummy_dataset' and 'data_for_joins'
 
 file_table_pairs = generate_file_table_pairs(
     ("Planets.csv", "dummy_dataset.Planets"),
     ("nutrition.csv", "dummy_dataset.Nutrition"),
     ("WorldPopulation2023.csv", "dummy_dataset.World_Population"),
     ("earning.csv", "dummy_dataset.Earnings"),
-    ("efw_cc.csv", "dummy_dataset.Economic_Freedom_of_the_World"),
+    ("efw_cc.json", "dummy_dataset.Economic_Freedom_of_the_World"),
     ("significant_earthquakes.csv", "dummy_dataset.Significant_Earthquakes"),
     ("SampleforOrders.csv", "dummy_dataset.Orders"),
     ("mock_orders.csv", "dummy_dataset.mock_orders"),
@@ -20,4 +23,11 @@ file_table_pairs = generate_file_table_pairs(
     ("people_100.csv", "dummy_dataset.people_sample"),
     ("people_account_type.csv", "data_for_joins.people_account_types"),
     ("people_credit_check.csv", "data_for_joins.people_credit_check")
+)
+
+# logging configuration setting logging level to Info
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
 )
