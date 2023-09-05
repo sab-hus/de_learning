@@ -1,8 +1,13 @@
 from google.cloud import bigquery
-from config import file_table_pairs
+from file_names import file_table_pairs
 import io
 import logging
-import config
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 def read_csv_file(file_path):
     with open(file_path, "rb") as source_file:
@@ -23,25 +28,23 @@ def load_data_to_bq(client, file_content, table_id, job_config):
     job.result()
     return job
 
-# look at other functions outside of load_table_from_file
 # think about reasoning behind why using certain code structure - why using certain functions from library, how the flow works
-def execute_load_process(file_path, table_id, client):
+def execute_single_load(file_path, table_id, client):
         try:
             file_content = read_csv_file(file_path)
             job_config = configure_job_config(file_content)
             job = load_data_to_bq(client, file_content, table_id, job_config)
             logging.info(f"Data loaded successfully to table {table_id}!")
-            # have logging printed out for each table to encapsulate all edge cases - shorten logging message
         except Exception as e:
             logging.error(f"Error occured in loading data to table {table_id}: {e}")
 
-def main():
+def execute_all_pipelines():
     client = bigquery.Client()
     try:
         for file_path, table_id in file_table_pairs:
-                execute_load_process(file_path, table_id, client)
+                execute_single_load(file_path, table_id, client)
     except Exception as main_exception:
         logging.info(f"An error occurred in the main function: {main_exception}")
 
 if __name__ == "__main__":
-    main()
+    execute_all_pipelines()
