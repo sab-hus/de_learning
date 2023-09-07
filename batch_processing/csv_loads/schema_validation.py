@@ -8,9 +8,11 @@ logging.basicConfig(level=logging.INFO)
 def convert_data_types(input_file, output_file):
     try:
         df = pd.read_csv(input_file)
-        
+
         conversion_errors = []
-        for idx, row in df.iterrows():
+        # for loop performance is slower. Big O notation - measure code performance - not optimal choice for larger dataset - not worth for simply carrying out data validation
+        # .map .reduce don't present the same issues as in with looping in terms of code performance
+        for idx, row in df.iterrows(): 
             try:
                 contribution = float(row['contribution'])
                 billed_date = pd.to_datetime(row['billed_date'], format='%m/%d/%Y')
@@ -22,11 +24,11 @@ def convert_data_types(input_file, output_file):
         df['missing_flag'] = df.isna().any(axis=1)
 
         df.to_csv(output_file, index=False)
-
-        if conversion_errors:
-            logging.error(f"Errors occurred while converting data type in rows: {conversion_errors}")
-        else:
-            logging.info("Data type conversion and CSV saved successful.")
+# the below is somewhat repetitive and can become very cumbersome when scaling up and working with larger amounts of data
+        # if conversion_errors:
+        #     logging.error(f"Errors occurred while converting data type in rows: {conversion_errors}")
+        # else:
+        #     logging.info("Data type conversion and CSV saved successful.")
 
     except Exception as e:
         logging.error(f"An error occurred: {str(e)}")
@@ -35,7 +37,7 @@ convert_data_types(input_file, output_file)
 
 def validate_mock_orders_schema(csv_file_path):
     try:
-        df = pd.read_csv(csv_file_path)
+        # df = pd.read_csv(csv_file_path) warning_on_error instead of hard stopping
         schema = pa.DataFrameSchema({
             "contribution": pa.Column(pa.Float, required=True, nullable=False),
             "billed_date": pa.Column(pa.DateTime, required=True, nullable=False),
