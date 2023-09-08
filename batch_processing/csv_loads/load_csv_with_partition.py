@@ -48,3 +48,5 @@ if __name__ == "__main__":
     file_path = input_file
     table_id = table_path 
     execute_single_load(file_path, table_id, client)
+
+# how does partitioning work with batch and with streaming
