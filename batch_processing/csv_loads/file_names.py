@@ -26,3 +26,7 @@ file_table_pairs = generate_file_table_pairs(
 )
 
 # manual inputs and manual values in envion/config files: separate out codebase from the parameters you need
+transform_data_file_1 = "/Users/sabahhussain/learning_development/batch_processing/csv_files/transformation_dataset1.csv"
+transform_data_file_2 = "/Users/sabahhussain/learning_development/batch_processing/csv_files/transformation_dataset2.csv"
+transformed_file_1 = "/Users/sabahhussain/learning_development/batch_processing/csv_loads/transform_1.csv"
+transformed_file_2 = "/Users/sabahhussain/learning_development/batch_processing/csv_loads/transform_2.csv"
