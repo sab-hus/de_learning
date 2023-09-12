@@ -1,4 +1,5 @@
 import logging
+from google.cloud import bigquery
 
 def generate_file_table_pairs(*args):
     file_table_pairs = []
@@ -26,7 +27,16 @@ file_table_pairs = generate_file_table_pairs(
 )
 
 # manual inputs and manual values in envion/config files: separate out codebase from the parameters you need
-transform_data_file_1 = "/Users/sabahhussain/learning_development/batch_processing/csv_files/transformation_dataset1.csv"
+input_csv = "/Users/sabahhussain/learning_development/batch_processing/csv_files/transformation_dataset1.csv"
+untransformed_input_csv = "/Users/sabahhussain/learning_development/batch_processing/csv_files/transformation_dataset1.csv"
 transform_data_file_2 = "/Users/sabahhussain/learning_development/batch_processing/csv_files/transformation_dataset2.csv"
 transformed_file_1 = "/Users/sabahhussain/learning_development/batch_processing/csv_loads/transform_1.csv"
-transformed_file_2 = "/Users/sabahhussain/learning_development/batch_processing/csv_loads/transform_2.csv"
+transformed_output_csv = "/Users/sabahhussain/learning_development/batch_processing/csv_loads/transform_2.csv"
+transformed_table_path = "dt-sabah-sandbox-dev.load_with_schema.transformed_csv"
+
+schema = [
+    bigquery.SchemaField("legal_entity", "STRING"),
+    bigquery.SchemaField("counter_party", "STRING"),
+    bigquery.SchemaField("sum_value_ARAP_status", "FLOAT64"),
+    bigquery.SchemaField("sum_value_ACCR_status", "FLOAT64"),
+]
