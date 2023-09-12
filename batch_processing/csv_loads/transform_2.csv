@@ -1,0 +1,9 @@
+legal_entity,counter_party,sum_value_ARAP_status,sum_value_ACCR_status
+L1,C1,40.0,
+L1,C3,5.0,
+L1,C4,40.0,100.0
+L2,C2,20.0,40.0
+L2,C5,1000.0,115.0
+L3,C6,145.0,60.0
+L2,C3,,52.0
+L3,C3,,145.0
