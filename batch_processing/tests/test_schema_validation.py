@@ -4,7 +4,6 @@ import pytest
 import pandas as pd
 from my_modules import validate_schema
 
-
 @pytest.fixture
 def df():
     return pd.DataFrame({

@@ -1,5 +1,5 @@
 from google.cloud import bigquery
-from file_names import file_table_pairs
+from file_names_config import file_table_pairs
 import io
 import logging
 
