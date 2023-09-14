@@ -51,9 +51,8 @@ def configure_job_config(file_content):
 def validate_schema(df):
     try:
         schema = pa.DataFrameSchema({
-            "date": pa.Column(pa.DateTime, required=True, nullable=True),
-            "age": pa.Column(pa.Int, required=True, nullable=True),
-            "name": pa.Column(pa.String, required=True, nullable=True)
+            "Name": pa.Column(pa.String, required=True, nullable=True),
+            "Age": pa.Column(pa.Int, required=True, nullable=True)
         })
         schema.validate(df, lazy=True)
         logging.info("Validation successful for all columns.")
