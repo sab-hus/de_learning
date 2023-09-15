@@ -13,13 +13,18 @@ json_file_table_pairs = generate_json_file_table_pairs(
     ("people.json", "People"),
     ("colours.json", "Colours"),
     ("fruit.json", "Fruit"),
-    ("birthdays.json", "Birthdays")
+    ("birthdays.json", "Birthdays"),
+    ("flight_dates.json", "Flight_Dates")
 )
 
 schema = [
-    bigquery.SchemaField("name", "string"),
-    bigquery.SchemaField("age", "integer")
+    bigquery.SchemaField("Destination", "string"),
+    bigquery.SchemaField("Airline", "string"),
+    bigquery.SchemaField("Date", "date")
     ]
 
 file_for_schema_load = "/Users/sabahhussain/learning_development/batch_processing/json_files/people.json"
 table_id_json_schema_load = "dt-sabah-sandbox-dev.load_json_with_schema.people_schema"
+
+file_for_partitioning_load = "/Users/sabahhussain/learning_development/batch_processing/json_files/flight_dates.json"
+table_id_json_partitioning_load= "dt-sabah-sandbox-dev.load_json_partitioning.Flight_Dates"
