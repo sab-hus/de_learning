@@ -63,7 +63,6 @@ def execute_single_load(file_path, table_id, client):
             job_config = configure_job_config(file_content)
             logging.info(job_config.create_disposition)
             df = pd.read_json(io.BytesIO(file_content), lines=True)
-            print(df.dtypes)
             validate_schema(df)
             job = load_data_to_bq(client, file_content, table_id, job_config)
             logging.info(f"Data loaded successfully to table {table_id}!")
