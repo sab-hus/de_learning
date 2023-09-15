@@ -43,3 +43,5 @@ schema = [
 
 input_file = 'mock_orders.csv'
 output_file = 'mock_orders_updated.csv'
+table_path = "dt-sabah-sandbox-dev.load_with_partitioning.mock_orders_year"
+table_path_2 = "dt-sabah-sandbox-dev.load_with_partitioning.mock_orders_month"
