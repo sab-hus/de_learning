@@ -40,3 +40,6 @@ schema = [
     bigquery.SchemaField("sum_value_ARAP_status", "FLOAT64"),
     bigquery.SchemaField("sum_value_ACCR_status", "FLOAT64"),
 ]
+
+input_file = 'mock_orders.csv'
+output_file = 'mock_orders_updated.csv'
