@@ -2,6 +2,7 @@ from google.cloud import bigquery
 from file_names import file_table_pairs
 import io
 import logging
+import schema_validation
 from schema_validation import convert_data_types, validate_mock_orders_schema
 
 logging.basicConfig(
@@ -42,14 +43,6 @@ def execute_single_load(file_path, table_id, client, schema):
                 logging.error(f"Schema validation failed for file {file_path}. Data not loaded.")
         except Exception as e:
             logging.error(f"Error occured in loading data to table {table_id}: {e}")
-
-# def execute_all_pipelines():
-#     client = bigquery.Client()
-#     try:
-#         for file_path, table_id in file_table_pairs:
-#                 execute_single_load(file_path, table_id, client)
-#     except Exception as main_exception:
-#         logging.info(f"An error occurred in the main function: {main_exception}")
 
 if __name__ == "__main__":
     execute_single_load()
