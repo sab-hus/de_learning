@@ -1,62 +1,51 @@
 from google.cloud import bigquery
+from file_names_config import json_file_table_pairs
+import io
+import logging
 
-client = bigquery.Client()
-
-table_id_1 = "dt-sabah-sandbox-dev.load_json.People"
-file_path_1 = "/Users/sabahhussain/learning_development/batch_processing/json_files/people.json"
-
-table_id_2 = "dt-sabah-sandbox-dev.load_json.Colours"
-file_path_2 = "/Users/sabahhussain/learning_development/batch_processing/json_files/colours.json"
-
-table_id_3 = "dt-sabah-sandbox-dev.load_json.Fruit"
-file_path_3 = "/Users/sabahhussain/learning_development/batch_processing/json_files/fruit.json"
-
-table_id_4 = "dt-sabah-sandbox-dev.load_json.Customers"
-file_path_4 = "/Users/sabahhussain/learning_development/batch_processing/json_files/customer_details.json"
-
-table_id_5 = "dt-sabah-sandbox-dev.load_json.Birthdays"
-file_path_5 = "/Users/sabahhussain/learning_development/batch_processing/json_files/birthdays.json"
-
-job_config = bigquery.LoadJobConfig(
-    source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
-    autodetect = True
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
 )
 
-# Load JSON data from local file into BigQuery table
-with open(file_path_1, 'rb') as source_file:
-    load_job = client.load_table_from_file(
-        source_file,
-        table_id_1,
-        job_config=job_config
-    )
-
-with open(file_path_2, 'rb') as source_file:
-    load_job = client.load_table_from_file(
-        source_file,
-        table_id_2,
-        job_config=job_config
-    )
-
-with open(file_path_3, 'rb') as source_file:
-    load_job = client.load_table_from_file(
-        source_file,
-        table_id_3,
-        job_config=job_config
-    )
-
-with open(file_path_4, 'rb') as source_file:
-    load_job = client.load_table_from_file(
-        source_file,
-        table_id_4,
-        job_config=job_config
-    )
+def read_json_file(file_path):
+    with open(file_path, "rb") as source_file:
+        return source_file.read()
     
-with open(file_path_5, 'rb') as source_file:
-    load_job = client.load_table_from_file(
-        source_file,
-        table_id_5,
-        job_config=job_config
+def configure_job_config(file_content):
+    job_config = bigquery.LoadJobConfig(
+    source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
+    autodetect = True
     )
-    
-load_job.result()  # Wait for the job to complete
-print("Data loaded successfully!")
+    return job_config
+
+
+def load_data_to_bq(client, file_content, table_id, job_config):
+    file_stream = io.BytesIO(file_content)
+    job=client.load_table_from_file(
+        file_stream,
+        table_id,
+        job_config=job_config)
+    job.result()
+    return job
+
+def execute_single_load(file_path, table_id, client):
+        try:
+            file_content = read_json_file(file_path)
+            job_config = configure_job_config(file_content)
+            job = load_data_to_bq(client, file_content, table_id, job_config)
+            logging.info(f"Data loaded successfully to table {table_id}!")
+        except Exception as e:
+            logging.error(f"Error occured in loading data to table {table_id}: {e}")
+
+def execute_all_pipelines():
+    client = bigquery.Client()
+    try:
+        for file_path, table_id in json_file_table_pairs:
+                execute_single_load(file_path, table_id, client)
+    except Exception as main_exception:
+        logging.info(f"An error occurred in the main function: {main_exception}")
+
+if __name__ == "__main__":
+    execute_all_pipelines()
