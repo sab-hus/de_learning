@@ -28,3 +28,13 @@ table_id_json_schema_load = "dt-sabah-sandbox-dev.load_json_with_schema.people_s
 
 file_for_partitioning_load = "/Users/sabahhussain/learning_development/batch_processing/json_files/flight_dates.json"
 table_id_json_partitioning_load= "dt-sabah-sandbox-dev.load_json_partitioning.Flight_Dates"
+
+file_for_transformation_load = "/Users/sabahhussain/learning_development/batch_processing/json_files/birthdays.json"
+transformed_json_output_file = "/Users/sabahhussain/learning_development/batch_processing/json_files/transformed_birthdays.json"
+table_id_json_transformation_load = "dt-sabah-sandbox-dev.load_json_transformation.Birthdays_Transformed"
+
+schema_transformation_load = [
+    bigquery.SchemaField("Name", "string"),
+    bigquery.SchemaField("Age", "integer"),
+    bigquery.SchemaField("Date", "date")
+    ]
