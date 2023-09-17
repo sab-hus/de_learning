@@ -1,6 +1,6 @@
 import google.cloud
 from google.cloud import bigquery
-from file_names_config import file_for_schema_load, table_id_json_schema_load, schema
+from file_names_config import file_for_schema_load, table_id_json_schema_load, json_schema_load
 import io
 import logging
 import pandera as pa
@@ -19,7 +19,7 @@ def read_json_file(file_path):
 def configure_job_config(file_content):
     job_config = bigquery.LoadJobConfig(
     source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
-    schema=schema)
+    schema=json_schema_load)
     return job_config
 
 def validate_schema(df):

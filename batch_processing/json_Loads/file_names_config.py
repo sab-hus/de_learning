@@ -23,6 +23,11 @@ schema = [
     bigquery.SchemaField("Date", "date")
     ]
 
+json_schema_load = [
+    bigquery.SchemaField("Name", "string"),
+    bigquery.SchemaField("Age", "integer")
+    ]
+
 file_for_schema_load = "/Users/sabahhussain/learning_development/batch_processing/json_files/people.json"
 table_id_json_schema_load = "dt-sabah-sandbox-dev.load_json_with_schema.people_schema"
 
