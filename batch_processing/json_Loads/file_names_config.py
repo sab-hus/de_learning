@@ -14,7 +14,8 @@ json_file_table_pairs = generate_json_file_table_pairs(
     ("colours.json", "Colours"),
     ("fruit.json", "Fruit"),
     ("birthdays.json", "Birthdays"),
-    ("flight_dates.json", "Flight_Dates")
+    ("flight_dates.json", "Flight_Dates"),
+    ("reference_table_fruit.json", "Reference_Table_Fruit")
 )
 
 schema = [
