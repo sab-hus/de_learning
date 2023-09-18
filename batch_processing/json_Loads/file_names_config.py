@@ -43,3 +43,6 @@ schema_transformation_load = [
     bigquery.SchemaField("Age", "integer"),
     bigquery.SchemaField("Date", "date")
     ]
+
+file_for_clustering_load = "/Users/sabahhussain/learning_development/batch_processing/json_files/flight_dates.json"
+table_id_json_clustering_load = "dt-sabah-sandbox-dev.load_json_clustering.flight_dates"
