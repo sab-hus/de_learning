@@ -41,6 +41,7 @@ def test_validate_schema_missing_column():
         "sum_value_ARAP_status": [5.221],
         "sum_value_ACCR_status": [400.1]
     })
+    
     expected_errors = pd.DataFrame({
         "schema_context": ["DataFrameSchema"],
         "column": [None],
@@ -49,9 +50,7 @@ def test_validate_schema_missing_column():
         "failure_case": ["counter_party"],
         "index": [None]
     })
-    # print(expected_errors.columns)
-    actual_errors = validate_schema(invalid_df) 
-    print(actual_errors.compare(expected_errors))
 
+    actual_errors = validate_schema(invalid_df) 
     assert actual_errors.equals(expected_errors)
 
