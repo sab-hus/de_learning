@@ -2,10 +2,10 @@ from google.cloud import bigquery
 
 
 schema =  [
-    bigquery.SchemaField("userId", "INTEGER"),
-    bigquery.SchemaField("id", "INTEGER"),
-    bigquery.SchemaField("title", "STRING"),
-    bigquery.SchemaField("body", "STRING")
+    bigquery.SchemaField("type", "STRING"),
+    bigquery.SchemaField("properties", "STRING"),
+    bigquery.SchemaField("geometry", "STRING"),
+    bigquery.SchemaField("id", "STRING")
 ]
 
 api_url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=20230813&endtime=20230814"
