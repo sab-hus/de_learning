@@ -25,7 +25,6 @@ def fetch_data_from_api(api_url):
             for row in earthquake_features:
                 row["properties"] = str(row["properties"])
                 row["geometry"] = str(row["geometry"])
-            return earthquake_features
         else:
             logging.info(f"Request failed with status code: {response.status_code}")
     except requests.exceptions.RequestException as e:
